@@ -42,7 +42,7 @@ body {
 .main-content {
     flex: 1;
     padding: 1rem;
-    padding-bottom: 6rem; /* Increased space for bottom nav to prevent overlap */
+    padding-bottom: 4.5rem; /* Reduced space to bring nav bar closer to content */
     overflow-y: auto;
 }
 
@@ -55,12 +55,12 @@ body {
 .iframe-container {
     position: relative;
     width: 100%;
-    height: calc(100vh - 180px); /* Increased to account for header + nav bar + padding */
+    height: calc(100vh - 160px); /* Reduced to bring nav bar closer */
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     border: 1px solid #e0e0e0;
-    margin-bottom: 1rem; /* Add bottom margin for extra spacing */
+    margin-bottom: 0.5rem; /* Reduced bottom margin */
 }
 
 .iframe-container iframe {
@@ -118,33 +118,98 @@ body {
     font-weight: 500;
 }
 
-/* Responsive Design */
-@media (max-width: 480px) {
+/* iPad and Tablet specific styling */
+@media (min-width: 481px) and (max-width: 1024px) {
+    .bottom-nav {
+        padding: 0.8rem 0; /* Increased padding for better touch targets */
+        min-height: 80px; /* Ensure adequate height */
+    }
+    
+    .nav-item {
+        min-width: 80px; /* Increased minimum width */
+        padding: 0.8rem 1rem; /* Increased padding */
+    }
+    
+    .nav-icon {
+        font-size: 1.8rem; /* Larger icons for iPad */
+        margin-bottom: 0.3rem;
+    }
+    
+    .nav-label {
+        font-size: 0.8rem; /* Slightly larger text */
+        font-weight: 600;
+    }
+    
     .main-content {
-        padding: 0.8rem;
-        padding-bottom: 6rem; /* Ensure enough space for nav bar on mobile */
+        padding-bottom: 5rem; /* Adequate space for larger nav bar */
     }
     
     .iframe-container {
-        height: calc(100vh - 160px); /* Adjusted for mobile header and nav */
+        height: calc(100vh - 170px); /* Adjusted for larger nav bar */
+        margin-bottom: 1rem;
+    }
+}
+
+/* Mobile Design */
+@media (max-width: 480px) {
+    .main-content {
+        padding: 0.8rem;
+        padding-bottom: 4rem; /* Reduced space for mobile to bring nav closer */
+    }
+    
+    .iframe-container {
+        height: calc(100vh - 140px); /* Reduced for mobile to bring nav closer */
         border-radius: 8px;
-        margin-bottom: 1.5rem; /* Extra margin on mobile */
+        margin-bottom: 0.8rem; /* Reduced margin on mobile */
     }
 }
 
 /* Extra small screens */
 @media (max-width: 360px) {
     .iframe-container {
-        height: calc(100vh - 140px); /* Even more conservative for very small screens */
-        margin-bottom: 2rem;
+        height: calc(100vh - 120px); /* Reduced for very small screens */
+        margin-bottom: 0.5rem;
     }
     
     .main-content {
-        padding-bottom: 7rem; /* Extra padding for very small screens */
+        padding-bottom: 3.5rem; /* Reduced padding for very small screens */
     }
 }
 
-@media (min-width: 768px) {
+/* iPad Pro and larger tablets */
+@media (min-width: 1025px) and (max-width: 1366px) {
+    .bottom-nav {
+        padding: 1rem 0; /* Even more padding for larger tablets */
+        min-height: 90px;
+    }
+    
+    .nav-item {
+        min-width: 100px; /* Larger touch targets */
+        padding: 1rem 1.5rem;
+    }
+    
+    .nav-icon {
+        font-size: 2rem; /* Larger icons */
+        margin-bottom: 0.4rem;
+    }
+    
+    .nav-label {
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+    
+    .main-content {
+        padding-bottom: 6rem;
+    }
+    
+    .iframe-container {
+        height: calc(100vh - 180px);
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1367px) {
     .app-container {
         max-width: 768px;
         margin: 0 auto;
