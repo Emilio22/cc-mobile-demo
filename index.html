@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <h1>My App</h1>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="iframe-container">
+                <iframe class="" src="https://your-agency.cldportal.com/embedded-dashboard/page=dashboard" id="embedded-dashboard" title="social_dashboard" width="100%;" style="border: none;"></iframe>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-item selected-nav" onclick="navigateDashboard('dashboard', this);">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">Home</span>
+            </button>
+            <button class="nav-item" onclick="navigateDashboard('calendar', this);">
+                <span class="nav-icon">📅</span>
+                <span class="nav-label">Calendar</span>
+            </button>
+            <button class="nav-item" onclick="navigateDashboard('inbox', this);">
+                <span class="nav-icon">💬</span>
+                <span class="nav-label">Social</span>
+            </button>
+        </nav>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
