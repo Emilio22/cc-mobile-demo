@@ -59,3 +59,5 @@ Each tab sends specific page parameters to the iframe:
 ## Development
 
 The project uses vanilla HTML, CSS, and JavaScript with no external dependencies for maximum compatibility and performance.
+
+
