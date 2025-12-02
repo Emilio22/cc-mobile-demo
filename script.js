@@ -68,82 +68,10 @@ const initializeMobileDetection = () => {
   };
 };
 
-// Mobile-specific enhancements
+// Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize mobile detection
     initializeMobileDetection();
-    
-    // Add haptic feedback for mobile devices
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => {
-        item.addEventListener('click', function() {
-            if (navigator.vibrate) {
-                navigator.vibrate(50);
-            }
-        });
-    });
-    
-    // Touch gesture support for mobile
-    let startX = 0;
-    let startY = 0;
-    let endX = 0;
-    let endY = 0;
-    
-    document.addEventListener('touchstart', function(e) {
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-    });
-    
-    document.addEventListener('touchend', function(e) {
-        endX = e.changedTouches[0].clientX;
-        endY = e.changedTouches[0].clientY;
-        
-        handleSwipe();
-    });
-    
-    function handleSwipe() {
-        const deltaX = endX - startX;
-        const deltaY = endY - startY;
-        
-        // Only handle horizontal swipes
-        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
-            const currentActiveNav = document.querySelector('.selected-nav');
-            const currentNavIndex = Array.from(navItems).indexOf(currentActiveNav);
-            
-            if (deltaX > 0 && currentNavIndex > 0) {
-                // Swipe right - go to previous tab
-                navItems[currentNavIndex - 1].click();
-            } else if (deltaX < 0 && currentNavIndex < navItems.length - 1) {
-                // Swipe left - go to next tab
-                navItems[currentNavIndex + 1].click();
-            }
-        }
-    }
-    
-    // Add smooth scrolling for better mobile experience
-    document.documentElement.style.scrollBehavior = 'smooth';
-    
-    // Prevent zoom on double tap for better mobile experience
-    let lastTouchEnd = 0;
-    document.addEventListener('touchend', function(event) {
-        const now = (new Date()).getTime();
-        if (now - lastTouchEnd <= 300) {
-            event.preventDefault();
-        }
-        lastTouchEnd = now;
-    }, false);
-    
-    // Add keyboard navigation support
-    document.addEventListener('keydown', function(e) {
-        const currentActiveNav = document.querySelector('.selected-nav');
-        const currentNavIndex = Array.from(navItems).indexOf(currentActiveNav);
-        
-        if (e.key === 'ArrowLeft' && currentNavIndex > 0) {
-            navItems[currentNavIndex - 1].click();
-        } else if (e.key === 'ArrowRight' && currentNavIndex < navItems.length - 1) {
-            navItems[currentNavIndex + 1].click();
-        }
-    });
     
     // Handle window resize to update mobile detection
     let resizeTimeout;
@@ -170,8 +98,4 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Mobile detection:', isMobile());
     console.log('Screen size:', window.innerWidth + 'x' + window.innerHeight);
     console.log('User agent:', navigator.userAgent);
-    console.log('Available navigation:');
-    console.log('- Home: navigateDashboard("dashboard", element)');
-    console.log('- Calendar: navigateDashboard("calendar", element)');
-    console.log('- Social Inbox: navigateDashboard("inbox", element)');
 });
